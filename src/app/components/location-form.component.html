@@ -1,0 +1,45 @@
+<div [ngSwitch]="value">
+    <md-select placeholder="Request by:">
+        <md-option (click)="value='G'">Coordinates</md-option>
+        <md-option (click)="value='C'">City Name</md-option>
+        <md-option (click)="value='Z'">Zip Code</md-option>
+        <md-option (click)="value='I'">City ID</md-option>
+    </md-select>
+
+    <div *ngSwitchCase="'G'">
+        <md-input-container>
+            <input mdInput type="number" placeholder="Latitude" [(ngModel)]="lat">
+        </md-input-container>
+        <md-input-container>
+            <input mdInput type="number" placeholder="Longitude" [(ngModel)]="lng">
+        </md-input-container>
+    </div>
+    
+    <div *ngSwitchCase="'C'">
+        <md-input-container>
+            <input mdInput type="text" placeholder="City Name" [(ngModel)]="cityName">
+        </md-input-container>
+        <md-input-container>
+            <input mdInput type="text" placeholder="Country Code" [(ngModel)]="countryCode">
+        </md-input-container>
+    </div>
+
+    <div *ngSwitchCase="'Z'">
+        <md-input-container>
+            <input mdInput type="text" placeholder="Zip Code" [(ngModel)]="zipCode">
+        </md-input-container>
+        <md-input-container>
+            <input mdInput type="text" placeholder="Country Code" [(ngModel)]="countryCode">
+        </md-input-container>
+    </div>
+
+    <div *ngSwitchCase="'I'">
+        <md-input-container>
+            <input mdInput type="text" placeholder="City ID" [(ngModel)]="cityId">
+        </md-input-container>
+    </div>
+    
+    <div fxLayoutAlign="end" *ngIf="value">
+        <button md-raised-button color="primary" type="submit" (click)="add()">Add Location</button>
+    </div>
+</div>

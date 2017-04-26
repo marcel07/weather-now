@@ -1,3 +1,22 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-container>
+  <md-sidenav #sideNav class="sidenavi" mode="over">
+    <div class="sidenav-content" fxLayout="column" fxLayoutGap="20px">
+      <h3 id="nav-header" fxLayoutAlign="center">Navigation</h3>
+      <button md-button routerLink="home">Home</button>
+      <button md-button routerLink="locations">Locations</button>
+      <button md-button routerLink="settings">Settings</button>
+    </div>
+  </md-sidenav>
+
+
+  <md-toolbar color="primary">
+    <button id="menu-btn" md-mini-fab color="primary" (click)="sideNav.toggle()"><md-icon>menu</md-icon></button>
+
+    <span id="headWeather" fxFlex align="end">Weather Now</span>
+  </md-toolbar>
+
+  <router-outlet></router-outlet>
+
+</md-sidenav-container>
+
+

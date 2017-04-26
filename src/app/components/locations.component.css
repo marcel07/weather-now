@@ -1,0 +1,10 @@
+.savedLocationsList{
+    list-style: none;
+}
+
+
+
+.location-box{
+    padding: 3px;
+    border: 1px dashed gray;
+}

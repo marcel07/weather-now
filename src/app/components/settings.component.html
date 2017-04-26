@@ -1,0 +1,27 @@
+<div fxFlex="grow" fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="350px" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="start stretch">
+        <md-select placeholder="Unit Type" [(ngModel)]="unitType">
+            <md-option value="kelvin">
+                <span>Kelvin</span>
+            </md-option>
+            <md-option value="metric">
+                <span>Celcius</span>
+            </md-option>
+            <md-option value="imperial">
+                <span>Fahrenheit</span>
+            </md-option>
+        </md-select>
+        
+        <md-input-container>
+            <input mdInput type="text" name="apiKey" placeholder="API Key" [(ngModel)]="apiKey" required>
+        </md-input-container>
+        
+        <div fxFlex align="end">
+            <button md-raised-button color="primary" (click)="save()" [disabled]="!apiKey">Save</button>
+        </div>
+    </div>
+
+</div>
+
+
+

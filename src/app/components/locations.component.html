@@ -1,0 +1,40 @@
+<div fxLayoutAlign="center center">
+    <button md-raised-button (click)="add()">New Location</button>
+
+    <div class="flex-container"
+        fxLayout="column"
+        fxLayoutAlign="center center">
+        
+        <ul class="savedLocationsList">
+            <li *ngFor="let location of savedLocations">
+                <div class="location-box">
+                    <div class="locationBrief">
+                        <div class="brief_requestType">
+                            {{location.requestType}}
+                        </div>
+
+                        <div class="brief_CityName" *ngIf="location.requestType === 'C'">
+                            {{location.cityName}}, {{location.countryCode}}
+                        </div>
+                        
+                        <div class="brief_CityId" *ngIf="location.requestType === 'I'">
+                            {{location.cityId}}
+                        </div>
+                        
+                        <div class="brief_LatLng" *ngIf="location.requestType === 'G'">
+                            {{location.lat}}, {{location.lng}}
+                        </div>
+                        
+                        <div class="brief_Zip" *ngIf="location.requestType === 'Z'">
+                            {{location.zipCode}}, {{location.countryCode}}
+                        </div>
+                    </div>
+                    <div class=locationsEdit fxFlex align="end">
+                        <button md-mini-fab><md-icon>create</md-icon></button>
+                        <button md-mini-fab><md-icon>delete</md-icon></button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

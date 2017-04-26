@@ -1,0 +1,50 @@
+<h1 fxLayoutAlign="center" *ngIf="hasLocations; else noWeather">Your Weather</h1>
+<ng-template #noWeather><h1 fxLayoutAlign="center">Please Select a Location</h1></ng-template>
+
+<div *ngFor="let object of locationWeatherArray; let i = index;">
+    <div [ngSwitch]="object.location.requestType">
+        <h2 *ngSwitchCase="'C'"><strong>City: </strong>{{object.location.cityName | uppercase}}, <strong>Country: </strong>{{object.location.countryCode | uppercase}}</h2>
+        <h2 *ngSwitchCase="'G'"><strong>Latitude: </strong>{{object.location.lat}}, <strong>Longitude: </strong>{{object.location.lng}}</h2>
+        <h2 *ngSwitchCase="'Z'"><strong>Zip Code: </strong>{{object.location.zipCode}}, <strong>Country: </strong>{{object.location.countryCode | uppercase}}</h2>
+        <h2 *ngSwitchCase="'I'"><strong>City ID: </strong>{{object.location.cityId}}</h2>
+    </div>
+    
+    <div class="display-container" fxLayout="Row" fxLayoutGap="15px" fxLayoutWrap *ngIf="object.weather | async as forecasts; else loading">
+        <div *ngFor="let weather of forecasts" align="center" fxFlex="100px" style="background-color: lightblue; filter: saturate(0.66); border: 1px solid lightskyblue">
+            <div class="date">
+                <small>{{weather.dateTime | date:'d MMM'}}, {{weather.dateTime | date:'H:mm'}}</small>
+            </div>
+            <div><img src="http://openweathermap.org/img/w/{{weather.conditionsIcon}}.png" alt="{{weather.conditions}}"></div>
+            <div>
+                <strong>{{weather.tempAvg}}&deg;
+                    <span [ngSwitch]="weather.unitType">
+                        <span *ngSwitchCase="'metric'">C</span>
+                        <span *ngSwitchCase="'imperial'">F</span>
+                        <span *ngSwitchDefault>K</span>
+                    </span>
+                </strong>
+            </div>
+            <div><small>{{weather.conditions}}</small></div>
+            <div fxLayoutGap="18px">
+                <small>{{weather.tempMin}}&deg;
+                    <span [ngSwitch]="weather.unitType">
+                        <span *ngSwitchCase="'metric'">C</span>
+                        <span *ngSwitchCase="'imperial'">F</span>
+                        <span *ngSwitchDefault>K</span>
+                    </span>
+                </small>
+                
+                <small>{{weather.tempMax}}&deg;
+                    <span [ngSwitch]="weather.unitType">
+                        <span *ngSwitchCase="'metric'">C</span>
+                        <span *ngSwitchCase="'imperial'">F</span>
+                        <span *ngSwitchDefault>K</span>
+                    </span>
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #loading>Loading...</ng-template>
+
+</div>

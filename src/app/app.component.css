@@ -1,0 +1,42 @@
+:host {
+    width: 100%;
+    height: 100%;
+}
+
+md-sidenav-container {
+    width: 100%;
+    height: 100%;
+}
+
+#headWeather{
+    padding-left: 20px;
+    font-size: 30px;
+    color: rgba(89, 4, 111, 0.17);
+    text-shadow: 1px 1px white;
+    font-family: Georgia, Times, serif;
+}
+#nav-header{
+    color: white;
+}
+
+#menu-btn{
+    /*border-radius: 4px;*/
+    background-color: slateblue;
+    filter: saturate(0.5);
+}
+
+.sidenav-container{
+    /*width: 200px;
+    height: 700px;*/
+
+}
+
+.sidenavi{
+    width: 200px;
+    background-color: rgba(90, 75, 90, 0.95);
+    border: 1px solid gray;
+}
+
+.sidenavi button{
+    font-size: 20px;
+}

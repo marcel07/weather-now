@@ -48,6 +48,7 @@ export class LocationsService{
 
     public add(location: Location): void{
         this.locations.push(location);
+        console.log("Locations Array here:", this.locations)
         this.save()
     }
 
@@ -76,4 +77,6 @@ export class LocationsService{
         }
         
     }
+
+    
 }

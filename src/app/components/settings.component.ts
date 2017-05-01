@@ -19,7 +19,7 @@ export class SettingsComponent implements OnInit {
     constructor(private _settingsService: SettingsService) { 
     }
 
-    save(){
+    private save(){
         if(this.apiKey){
             this.settings[0] = ({
                 apiKey: this.apiKey,
@@ -29,6 +29,18 @@ export class SettingsComponent implements OnInit {
         }
     }
 
+    private load(){
+        console.log(localStorage.getItem('settings') !== null)
+        if(localStorage.getItem('settings') !== null){
+            this.unitType = this._settingsService.get('unitType'); 
+            this.apiKey = this._settingsService.get('apiKey');
+        }else{
+            this.apiKey = '';
+        }
+    }
+
     ngOnInit() { 
+        this.load();
+        console.log(this.apiKey)
     }
 }

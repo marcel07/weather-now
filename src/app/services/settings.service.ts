@@ -34,10 +34,8 @@ export class SettingsService {
         let storedSettings = localStorage.getItem('settings');
         if(storedSettings === null){
             this.setDefaults();
-            console.log('new settings', this.currentSettings);
         }else{
             this.currentSettings = <Settings> JSON.parse(localStorage.getItem('settings'));
-            console.log('loaded settings', this.currentSettings);
         }
     }
 

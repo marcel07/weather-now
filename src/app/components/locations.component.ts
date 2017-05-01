@@ -16,7 +16,7 @@ import { Location } from './../interfaces/location';
 
 export class LocationsComponent implements OnInit {
     
-    savedLocations: Location[] = [];
+    savedLocations: Location[] = this._locationsService.locations;
     cityName: string;
     countryCode: string;
     lat: number;
@@ -30,6 +30,6 @@ export class LocationsComponent implements OnInit {
         let locationForm = this._mdDialog.open(LocationFormComponent);
     }
     
-    ngOnInit() { 
+    ngOnInit() {
     }
 }
